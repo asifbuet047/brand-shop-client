@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Root";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
-import AddProductPage from "../Components/Home/AddProduct/AddProductPage";
-import MyCartPage from "../Components/Home/MyCart/MyCartPage";
+import AddProductPage from "../Components/AddProduct/AddProductPage";
+import MyCartPage from "../Components/MyCart/MyCartPage";
 import PrivateRoute from "./PrivateRoute";
-import LoginPage from "../Components/Home/SignIn/SignInPage";
-import AllProductsPage from "../Components/Home/AllProducts/AllProductsPage";
-import ProductDetailsPage from "../Components/Home/ProductDetails/ProductDetailsPage";
-import RegistrationPage from "../Components/Home/Registration/RegistrationPage";
-import SignInPage from "../Components/Home/SignIn/SignInPage";
+import SignInPage from "../Components/SignIn/SignInPage";
+import AllProductsPage from "../Components/AllProducts/AllProductsPage";
+import ProductDetailsPage from "../Components/ProductDetails/ProductDetailsPage";
+import RegistrationPage from "../Components/Registration/RegistrationPage";
+import Home from "../Components/Home/Home";
 
 
 const routes = createBrowserRouter([
@@ -16,6 +16,11 @@ const routes = createBrowserRouter([
         path: '/',
         element: <Root></Root>,
         children: [
+            {
+                path: '/',
+                element: <Home></Home>,
+                errorElement: <ErrorPage></ErrorPage>
+            },
             {
                 path: '/addproduct',
                 element: <AddProductPage></AddProductPage>,
