@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,16 +20,7 @@ function SignInPage() {
     const mail = formData.get('mail');
     signInUser(mail, password)
       .then((user) => {
-        toast.success(`Successfully Logged In. Welcome ${user.email}`, {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success(`Successfully Logged In. Welcome ${user.email}`);
         if (location.state === null) {
           navigate('/');
         } else {
@@ -38,22 +29,13 @@ function SignInPage() {
         }
       })
       .catch((error) => {
-        toast.error("Email and password dont match", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.error("Email and password dont match");
       })
 
   };
 
 
-  
+
   return (
     <div>
       {userLoading ?

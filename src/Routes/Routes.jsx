@@ -32,8 +32,8 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorPage></ErrorPage>
             },
             {
-                path: '/login',
-                element: <PrivateRoute><SignInPage></SignInPage></PrivateRoute>,
+                path: '/signin',
+                element: <SignInPage></SignInPage>,
                 errorElement: <ErrorPage></ErrorPage>
             },
             {

@@ -1,9 +1,9 @@
-import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FcGoogle } from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext';
+import { useContext } from 'react';
 
 
 function RegistrationPage() {
@@ -14,7 +14,7 @@ function RegistrationPage() {
     const handleGoogleSignIn = (event) => {
         signInWithGoogleAccount()
             .then((result) => {
-                console.log(result.user);
+                toast.success(`Registration successfully completed. Welcome ${result.email}`);
                 if (location.state === null) {
                     navigate('/');
                 } else {
@@ -22,16 +22,7 @@ function RegistrationPage() {
                 }
             })
             .catch((error) => {
-                toast.error(error.message, {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                    theme: "light",
-                });
+                toast.error(error.message);
             });
     }
 
@@ -46,16 +37,7 @@ function RegistrationPage() {
                 if (isPasswordLengthEnough(password)) {
                     createNewUser(mail, password)
                         .then((user) => {
-                            toast.success(`Registration successfully completed. Welcome ${user.email}`, {
-                                position: "bottom-center",
-                                autoClose: 5000,
-                                hideProgressBar: false,
-                                closeOnClick: false,
-                                pauseOnHover: false,
-                                draggable: false,
-                                progress: undefined,
-                                theme: "light",
-                            });
+                            toast.success(`Registration successfully completed. Welcome ${user.email}`);
                             if (location.state === null) {
                                 navigate('/');
                             } else {
@@ -64,52 +46,16 @@ function RegistrationPage() {
                             }
                         })
                         .catch((error) => {
-                            toast.error(error.message, {
-                                position: "bottom-right",
-                                autoClose: 5000,
-                                hideProgressBar: false,
-                                closeOnClick: false,
-                                pauseOnHover: false,
-                                draggable: false,
-                                progress: undefined,
-                                theme: "light",
-                            });
+                            toast.error(error.message);
                         })
                 } else {
-                    toast.error('Password length should be at least 6 character', {
-                        position: "bottom-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: false,
-                        pauseOnHover: false,
-                        draggable: false,
-                        progress: undefined,
-                        theme: "light",
-                    });
+                    toast.error('Password length should be at least 6 character');
                 }
             } else {
-                toast.error('Password should contain at least 1 capital character', {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                    theme: "light",
-                });
+                toast.error('Password should contain at least 1 capital character');
             }
         } else {
-            toast.error('Password should contain at least 1 special character', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "light",
-            });
+            toast.error('Password should contain at least 1 special character');
         }
     };
 
