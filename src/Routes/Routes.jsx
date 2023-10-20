@@ -15,6 +15,7 @@ const routes = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -50,6 +51,7 @@ const routes = createBrowserRouter([
             {
                 path: '/productdetails/:id',
                 element: <PrivateRoute><ProductDetailsPage></ProductDetailsPage></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/productdetails/${params.id}`),
                 errorElement: <ErrorPage></ErrorPage>
             }
         ]

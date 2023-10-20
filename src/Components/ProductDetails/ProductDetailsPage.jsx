@@ -1,21 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ProductDetailsPage() {
-  const { id } = useParams();
-  const { user, signOutUser } = useContext(AuthenticationContext);
-  console.log(user);
-  const [product, setProduct] = useState({});
+  const product = useLoaderData();
+  const { user } = useContext(AuthenticationContext);
   const { brand, description, image, name, price, rating, type } = product;
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/productdetails/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data));
-  }, []);
 
   const handleAddCart = (event) => {
     const userId = user.uid;
