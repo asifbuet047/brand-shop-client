@@ -18,12 +18,13 @@ function AllProductsPage() {
   return (
     <div>
       <AllProductsSlider></AllProductsSlider>
-      {
-        allProducts.length > 0 ?
-          allProducts.map((product, index) => <ProductCard product={product}></ProductCard>)
-          : <NoProductCard brand={name}></NoProductCard>
-      }
-
+      <div className=''>
+        {
+          allProducts.length > 0 ?
+            allProducts.map((product, index) => <ProductCard key={index} product={product}></ProductCard>)
+            : <NoProductCard brand={name}></NoProductCard>
+        }
+      </div>
     </div>
   )
 }

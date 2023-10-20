@@ -11,7 +11,7 @@ function Root() {
   console.log(user);
 
   return (
-    <div>
+    <div className=''>
       <NavigationBar></NavigationBar>
       <Outlet></Outlet>
       <Footer></Footer>

@@ -37,8 +37,8 @@ function NavigationBar() {
 
   }
   return (
-    <div>
-      <div className="navbar bg-base-200 justify-between pt-10">
+    <div className=''>
+      <div className="navbar bg-base-200 flex flex-col lg:flex-row lg:justify-around lg:pr-10 lg:pt-5">
         {/*Shop name*/}
         <div className="flex flex-row justify-center" tabIndex={0}>
           <Link to={'/'} className='text-black text-3xl'>Tech Brand Online Shop</Link>
@@ -75,7 +75,7 @@ function NavigationBar() {
 
 
           {/*avator of logged user with dropdown feather*/}
-          <div className="dropdown dropdown-end ml-5">
+          <div className="dropdown dropdown-left ml-5">
             <div className="btn btn-ghost" tabIndex={1}>
               {
                 user ?

@@ -5,7 +5,7 @@ function ProductCard({ product }) {
     const { brand, description, image, name, price, rating, type } = product;
     return (
         <div className='flex flex-col justify-center items-center'>
-            <div className="card w-1/2 bg-base-100 shadow-2xl pt-5 pb-5 pl-2 pr-2 mt-5 mb-5">
+            <div className="card w-full lg:w-1/2 bg-base-100 shadow-2xl pt-5 pb-5 pl-2 pr-2 mt-5 mb-5">
                 <figure>
                     <img src={image} alt={name} />
                 </figure>

@@ -19,7 +19,7 @@ function AllProductsSlider() {
     }, []);
 
     return (
-        <div className='h-[40vh] ml-10 mr-10 border-4 border-white rounded-xl'>
+        <div className='h-[40vh] ml-5 mr-5 lg:ml-10 lg:mr-10 border-4 border-white rounded-xl'>
             <Swiper
                 effect='creative'
                 creativeEffect={{
