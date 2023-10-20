@@ -1,12 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-function ProductCard({ product }) {
-    const { _id, brand, description, image, name, price, rating, type } = product;
+function CartProduct({ product }) {
+    console.log(product);
+    const { userId, productId } = product;
+    const [data, setData] = useState({});
+    const { name, brand, price, rating, type, image } = data;
+    console.log(data);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/productdetails/${productId}`)
+            .then((res) => res.json())
+            .then((data) => { setData(data) });
+    }, []);
     return (
         <div className='flex flex-col justify-center items-center'>
-            <div className="card w-full lg:w-1/2 bg-base-100 shadow-2xl pt-5 pb-5 pl-2 pr-2 mt-5 mb-5">
+            {data ? <div className="card w-full lg:w-1/2 bg-base-100 shadow-2xl pt-5 pb-5 pl-2 pr-2 mt-5 mb-5">
                 <figure>
                     <img src={image} alt={name} />
                 </figure>
@@ -17,15 +26,12 @@ function ProductCard({ product }) {
                     <h2 className="card-title">User Rating: {rating}</h2>
                     <h2 className="card-title">Type: {type}</h2>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary"><Link to={`/productdetails/${_id}`}>Details</Link></button>
-                        <button className="btn btn-primary">Update</button>
+                        <button className="btn btn-primary">Remove from Cart</button>
                     </div>
                 </div>
-            </div>
+            </div> : <span></span>}
         </div>
     )
 }
 
-ProductCard.propTypes = {}
-
-export default ProductCard
+export default CartProduct

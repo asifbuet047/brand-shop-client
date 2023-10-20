@@ -6,8 +6,6 @@ import 'aos/dist/aos.css';
 import Brand from '../Brands/Brand';
 import BrandsPage from '../Brands/BrandsPage';
 import BannerPage from '../Banner/BannerPage';
-import Aos from 'aos';
-
 
 
 function Home() {

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext'
 import { Link, NavLink } from 'react-router-dom'
 import { FaQuestion, FaUserCircle } from 'react-icons/fa'
@@ -6,7 +6,8 @@ import { space } from 'postcss/lib/list';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function NavigationBar() {
+function NavigationBar({ cart }) {
+  console.log(cart);
   const { user, signOutUser } = useContext(AuthenticationContext);
 
   const handleSignOut = () => {
@@ -54,24 +55,30 @@ function NavigationBar() {
             <button tabIndex={2} className="btn glass"><Link to={'/addproduct'}>Add Product</Link></button>
           </div>
 
+          {/* <div>
+            <button tabIndex={3} className="btn glass"><Link to={'/mycart'}>My Cart</Link></button>
+          </div> */}
+
           {/*shopping cart with dropdown feather*/}
           <div className="dropdown dropdown-end mr-5">
             <div className="btn btn-ghost" tabIndex={0}>
               <div className="indicator">
-                <span className="indicator-item badge badge-secondary">8</span>
+                <span className="indicator-item badge badge-secondary">{cart.length}</span>
                 <button type="button" className='btn glass'>My Cart</button>
               </div>
             </div>
             <div className="dropdown-content mt-3 z-[1] card card-compact w-52 bg-base-100 shadow" tabIndex={0}>
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="font-bold text-lg">{cart.length} Items</span>
+                {/* <span className="text-info">Subtotal: $999</span> */}
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block"><NavLink to={'/mycart'}>View Cart</NavLink></button>
                 </div>
               </div>
             </div>
           </div>
+
+
 
 
           {/*avator of logged user with dropdown feather*/}

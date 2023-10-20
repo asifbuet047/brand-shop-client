@@ -28,7 +28,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/mycart',
-                element: <MyCartPage></MyCartPage>,
+                element: <PrivateRoute><MyCartPage></MyCartPage></PrivateRoute>,
                 errorElement: <ErrorPage></ErrorPage>
             },
             {
@@ -44,6 +44,7 @@ const routes = createBrowserRouter([
             {
                 path: '/allproducts/:name',
                 element: <AllProductsPage></AllProductsPage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/allproducts/${params.name}`),
                 errorElement: <ErrorPage></ErrorPage>
             },
             {
