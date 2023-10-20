@@ -9,9 +9,9 @@ function SignInPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  if (!userLoading) {
-    navigate('/');
-  }
+  // if (!userLoading) {
+  //   navigate('/');
+  // }
   const handleSignIn = (event) => {
     event.preventDefault();
     console.log(event);

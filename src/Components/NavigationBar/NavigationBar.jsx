@@ -8,8 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function NavigationBar() {
   const { user, signOutUser } = useContext(AuthenticationContext);
-  const allProductButton = useRef(null);
-
 
   const handleSignOut = () => {
     console.log("signing out");
@@ -52,15 +50,9 @@ function NavigationBar() {
             <button className="btn glass"><Link to={'/'}>Home</Link></button>
           </div>
 
-          {
-            user ?
-              <div>
-                <button ref={allProductButton} tabIndex={2} className="btn glass"><Link to={'/addproduct'}>Add Product</Link></button>
-              </div>
-              : <div>
-                <button ref={allProductButton} tabIndex={2} className="btn glass" disabled><Link to={'/addproduct'}>Add Product</Link></button>
-              </div>
-          }
+          <div>
+            <button tabIndex={2} className="btn glass"><Link to={'/addproduct'}>Add Product</Link></button>
+          </div>
 
           {/*shopping cart with dropdown feather*/}
           <div className="dropdown dropdown-end mr-5">
