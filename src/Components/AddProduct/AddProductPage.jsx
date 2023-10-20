@@ -8,13 +8,22 @@ function AddProductPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const product_name = formData.get('product_name');
-    const product_brand = formData.get('product_brand');
-    const product_image = formData.get('product_image');
-    const product_price = formData.get('product_price');
-    const product_description = formData.get('product_description');
-    const product_type = formData.get('product_type');
-  
+    const name = formData.get('product_name');
+    const brand = formData.get('product_brand');
+    const image = formData.get('product_image');
+    const price = formData.get('product_price');
+    const description = formData.get('product_description');
+    const type = formData.get('product_type');
+
+    const newProduct = { name, image, type, price, rating, brand, description };
+
+    fetch('http://localhost:5000/addproduct', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newProduct)
+    }).then((res) => res.json()).then((data) => console.log(data));
   }
 
 
