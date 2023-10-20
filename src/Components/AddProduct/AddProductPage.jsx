@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Rating, RoundedStar } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 function AddProductPage() {
+  const [rating, setRating] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -11,8 +14,10 @@ function AddProductPage() {
     const product_price = formData.get('product_price');
     const product_description = formData.get('product_description');
     const product_type = formData.get('product_type');
-    
+  
   }
+
+
 
   return (
     <div className=''>
@@ -26,19 +31,16 @@ function AddProductPage() {
         <input name='product_price' type="number" placeholder="Price of the new product" className="input input-bordered w-full max-w-xs m-2" />
         <input name='product_description' type="text" placeholder="Short description of new product" className="input input-bordered w-full max-w-xs m-2" />
         <input name='product_type' type="text" placeholder="Type of the new product" className="input input-bordered w-full max-w-xs m-2" />
-        <div className="rating rating-half m-2">
-          <input type="radio" name="rating-1" className="bg-green-500 mask mask-star-2 mask-half-1" />
-          <input type="radio" name="rating-2" className="bg-green-500 mask mask-star-2 mask-half-2" />
-          <input type="radio" name="rating-3" className="bg-green-500 mask mask-star-2 mask-half-1" />
-          <input type="radio" name="rating-4" className="bg-green-500 mask mask-star-2 mask-half-2" />
-          <input type="radio" name="rating-5" className="bg-green-500 mask mask-star-2 mask-half-1" />
-          <input type="radio" name="rating-6" className="bg-green-500 mask mask-star-2 mask-half-2" />
-          <input type="radio" name="rating-7" className="bg-green-500 mask mask-star-2 mask-half-1" />
-          <input type="radio" name="rating-8" className="bg-green-500 mask mask-star-2 mask-half-2" />
-          <input type="radio" name="rating-9" className="bg-green-500 mask mask-star-2 mask-half-1" />
-          <input type="radio" name="rating-10" className="bg-green-500 mask mask-star-2 mask-half-2" />
+        <div className="m-2">
+          <Rating
+            style={{ maxWidth: 250 }}
+            items={10}
+            value={rating}
+            onChange={setRating}
+            itemStyles={{ itemShapes: RoundedStar, activeFillColor: '#FFB700', inactiveFillColor: '#FBF1A9' }}
+            radius='large' />
         </div>
-        <input type="submit" value="Add Product" className='btn btn-primary' />
+        <input type="submit" value="Add Product" className='btn btn-primary m-2' />
       </form>
     </div>
   )
