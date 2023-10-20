@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function ProductDetailsPage() {
   const product = useLoaderData();
-  console.log(product);
   const { user } = useContext(AuthenticationContext);
   const { brand, description, image, name, price, rating, type } = product;
 

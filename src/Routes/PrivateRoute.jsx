@@ -6,9 +6,13 @@ import { BeatLoader } from 'react-spinners';
 function PrivateRoute({ children }) {
     const { user, userLoading } = useContext(AuthenticationContext);
     const currentRoute = useLocation();
+    console.log(currentRoute);
 
     if (userLoading) {
-        return <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>;
+        return <div className='flex flex-row justify-center'><BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader></div>;
+    }
+    if (user) {
+        return children;
     }
     return <Navigate state={currentRoute.pathname} to='/signin'></Navigate>;
 

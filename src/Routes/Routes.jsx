@@ -45,7 +45,6 @@ const routes = createBrowserRouter([
             {
                 path: '/allproducts/:name',
                 element: <AllProductsPage></AllProductsPage>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/allproducts/${params.name}`),
                 errorElement: <ErrorPage></ErrorPage>
             },
             {

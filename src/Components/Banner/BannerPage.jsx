@@ -8,7 +8,7 @@ function BannerPage({ banner }) {
                 <div>
                     <h1 className="text-5xl font-bold">{banner.product_name}</h1>
                     <p className="py-6">{banner.product_short_des}</p>
-                    <button className="btn btn-primary">Buy only {banner.product_price}</button>
+                    <button className="btn btn-primary">Buy only ${banner.product_price}</button>
                 </div>
             </div>
         </div>
