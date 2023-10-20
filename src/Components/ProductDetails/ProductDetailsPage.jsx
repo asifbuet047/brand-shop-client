@@ -3,12 +3,19 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BeatLoader } from 'react-spinners';
+
 
 function ProductDetailsPage() {
-  const product = useLoaderData();
+  const { id } = useParams();
   const { user } = useContext(AuthenticationContext);
-  const { brand, description, image, name, price, rating, type } = product;
+  const [product, setProduct] = useState(null);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/productdetails/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, []);
 
   const handleAddCart = (event) => {
     const userId = user.uid;
@@ -51,22 +58,29 @@ function ProductDetailsPage() {
   return (
     <div>
       <div className='flex flex-col justify-center items-center'>
-        <div className="card w-full lg:w-1/2 bg-base-100 shadow-2xl lg:pt-5 lg:pb-5 lg:pl-2 lg:pr-2 lg:mt-5 lg:mb-5">
-          <figure>
-            <img src={image} alt={name} className='w-full' />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Name: {name}</h2>
-            <h2 className="card-title">Brand: {brand}</h2>
-            <h2 className="card-title">Price: ${price}</h2>
-            <h2 className="card-title">User Rating: {rating}</h2>
-            <h2 className="card-title">Type: {type}</h2>
-            <p>{description}</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-secondary" onClick={handleAddCart}>Add to Cart</button>
+        {
+          product ?
+            <div className="card w-full lg:w-1/2 bg-base-100 shadow-2xl lg:pt-5 lg:pb-5 lg:pl-2 lg:pr-2 lg:mt-5 lg:mb-5">
+              <figure>
+                <img src={product.image} alt={product.name} className='w-full' />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">Name: {product.name}</h2>
+                <h2 className="card-title">Brand: {product.brand}</h2>
+                <h2 className="card-title">Price: ${product.price}</h2>
+                <h2 className="card-title">User Rating: {product.rating}</h2>
+                <h2 className="card-title">Type: {product.type}</h2>
+                <p>{product.description}</p>
+                <div className="card-actions justify-end">
+                  <button className="btn btn-secondary" onClick={handleAddCart}>Add to Cart</button>
+                </div>
+              </div>
+            </div> :
+
+            <div className='flex flex-row justify-center h-screen items-center'>
+              <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
             </div>
-          </div>
-        </div>
+        }
       </div>
       <ToastContainer
         position="bottom-right"

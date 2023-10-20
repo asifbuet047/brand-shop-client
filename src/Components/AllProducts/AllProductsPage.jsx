@@ -27,7 +27,7 @@ function AllProductsPage() {
                 : <NoProductCard brand={" "}></NoProductCard>
             }
           </div> :
-          <div className='flex flex-row justify-center'>
+          <div className='flex flex-row justify-center h-screen items-center'>
             <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
           </div>
       }

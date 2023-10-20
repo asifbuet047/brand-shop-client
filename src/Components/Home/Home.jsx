@@ -30,7 +30,7 @@ function Home() {
             {
                 banner ?
                     <BannerPage banner={banner}></BannerPage> :
-                    <div className='flex flex-row justify-center pt-10 pb-10'>
+                    <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
                         <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
                     </div>
             }
@@ -38,7 +38,7 @@ function Home() {
                 {
                     brands ?
                         <BrandsPage allbrands={brands}></BrandsPage> :
-                        <div className='flex flex-row justify-center pt-10 pb-10'>
+                        <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
                             <ClockLoader color='#36D7B7' size={100} speedMultiplier={2}></ClockLoader>
                         </div>
                 }
