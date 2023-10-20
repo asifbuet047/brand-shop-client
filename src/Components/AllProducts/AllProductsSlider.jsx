@@ -19,7 +19,7 @@ function AllProductsSlider() {
     }, []);
 
     return (
-        <div className='h-[40vh] ml-5 mr-5 lg:ml-10 lg:mr-10 border-4 border-white rounded-xl'>
+        <div className='h-[40vh]'>
             <Swiper
                 effect='creative'
                 creativeEffect={{
@@ -29,20 +29,15 @@ function AllProductsSlider() {
                     },
                     next: {
                         rotate: 50,
-                        translate: ['100%', 0, 0],
+                        translate: ['50%', 0, 0],
                     },
                 }}
-                spaceBetween={5}
-
-                autoplay={{
-                    delay: 5000,
-                    disableOnInteraction: true,
-                }}
+                
                 pagination={{
                     clickable: true,
                     type: 'bullets'
                 }}
-                modules={[Autoplay, Pagination, Navigation, EffectCreative]}
+                modules={[Pagination, Navigation, EffectCreative]}
             >
                 {
                     advertisements ?
