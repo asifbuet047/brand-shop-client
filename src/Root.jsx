@@ -9,7 +9,6 @@ import { AuthenticationContext } from './Contexts/AuthenticationContext'
 function Root() {
   const { user } = useContext(AuthenticationContext);
   const [cart, setCart] = useState([]);
-  console.log(user);
 
   useEffect(() => {
     fetch(`http://localhost:5000/cart/${user?.uid}`)
