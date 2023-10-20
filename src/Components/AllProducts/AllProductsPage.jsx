@@ -19,7 +19,7 @@ function AllProductsPage() {
     <div>
       <AllProductsSlider></AllProductsSlider>
       {
-        allProducts ?
+        allProducts.length > 0 ?
           allProducts.map((product, index) => <ProductCard product={product}></ProductCard>)
           : <NoProductCard brand={name}></NoProductCard>
       }
