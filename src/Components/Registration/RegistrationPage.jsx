@@ -11,6 +11,7 @@ function RegistrationPage() {
     const { createNewUser, signInWithGoogleAccount } = useContext(AuthenticationContext);
     const navigate = useNavigate();
     const location = useLocation();
+    console.log(location);
 
     const handleGoogleSignIn = (event) => {
         signInWithGoogleAccount()

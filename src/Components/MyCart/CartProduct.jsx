@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 function CartProduct({ product }) {
-    console.log(product);
     const { userId, productId } = product;
     const [data, setData] = useState({});
     const { name, brand, price, rating, type, image } = data;
-    console.log(data);
 
     useEffect(() => {
         fetch(`http://localhost:5000/productdetails/${productId}`)

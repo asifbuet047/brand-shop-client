@@ -8,10 +8,8 @@ function SignInPage() {
   const { user, userLoading, signInUser } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(location);
 
-  // if (!userLoading) {
-  //   navigate('/');
-  // }
   const handleSignIn = (event) => {
     event.preventDefault();
     console.log(event);
@@ -60,7 +58,7 @@ function SignInPage() {
               </div>
               <div className='flex flex-col justify-center items-center'>
                 <h1>Dont have account?</h1>
-                <Link to={'/register'}><h1 className='text-red-600'>Register</h1></Link>
+                <Link to={'/register'} state={location.state}><h1 className='text-red-600'>Register</h1></Link>
               </div>
             </form>
           </div>

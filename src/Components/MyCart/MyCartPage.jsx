@@ -8,12 +8,11 @@ import { Navigate } from 'react-router-dom';
 function MyCartPage() {
   const { user } = useContext(AuthenticationContext);
   const [cart, setCart] = useState([]);
-  console.log(cart);
 
   useEffect(() => {
     fetch(`http://localhost:5000/cart/${user?.uid}`)
       .then((res) => res.json())
-      .then((data) => { console.log(data); setCart(data) });
+      .then((data) => setCart(data));
   }, []);
 
 
