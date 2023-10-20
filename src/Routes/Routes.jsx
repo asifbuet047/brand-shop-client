@@ -23,7 +23,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/addproduct',
-                element: <AddProductPage></AddProductPage>,
+                element: <PrivateRoute><AddProductPage></AddProductPage></PrivateRoute>,
                 errorElement: <ErrorPage></ErrorPage>
             },
             {

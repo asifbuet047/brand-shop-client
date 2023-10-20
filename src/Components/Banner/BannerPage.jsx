@@ -1,7 +1,6 @@
 import React from 'react'
 
 function BannerPage({ banner }) {
-    console.log(banner);
     return (
         <div className="hero h-1/6 bg-base-200 mt-5">
             <div className="hero-content flex-col lg:flex-row">

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-function PrivateRoute() {
+function PrivateRoute({ children }) {
+    const { user, userLoading } = useContext(AuthenticationContext);
+
     return (
         <div>
 

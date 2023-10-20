@@ -18,13 +18,13 @@ function Home() {
     useEffect(() => {
         fetch('http://localhost:5000/brands')
             .then((res) => res.json())
-            .then((data) => { console.log(data); setBrands(data) });
+            .then((data) => {setBrands(data) });
     }, []);
 
     useEffect(() => {
         fetch('http://localhost:5000/banner')
             .then((res) => res.json())
-            .then((data) => { console.log(data); setBanner(data) });
+            .then((data) => {setBanner(data) });
     }, []);
 
     return (
