@@ -1,14 +1,15 @@
 import React from 'react'
 
-function BannerPage() {
+function BannerPage({ banner }) {
+    console.log(banner);
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero h-1/6 bg-base-200 mt-5">
             <div className="hero-content flex-col lg:flex-row">
-                <img src="/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
+                <img src={banner.product_banner_image} className="max-w-sm rounded-lg shadow-2xl" />
                 <div>
-                    <h1 className="text-5xl font-bold">Box Office News!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <h1 className="text-5xl font-bold">{banner.product_name}</h1>
+                    <p className="py-6">{banner.product_short_des}</p>
+                    <button className="btn btn-primary">Buy only {banner.product_price}</button>
                 </div>
             </div>
         </div>

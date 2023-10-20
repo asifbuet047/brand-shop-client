@@ -4,7 +4,7 @@ import Brand from './Brand'
 
 function BrandsPage({ allbrands }) {
   const { name } = allbrands;
-  console.log(name);
+
   return (
     <div className='flex flex-col justify-center items-center'>
       {

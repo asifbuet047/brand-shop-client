@@ -7,9 +7,9 @@ function Brand({ brand }) {
         AOS.init();
     }, []);
     return (
-        <div data-aos="fade-left" className="card w-1/2 h-64 bg-base-300 shadow-2xl mt-5 mb-5 border-2 border-red-800">
+        <div data-aos="fade-left" className="card w-1/2 h-1/2 bg-base-300 shadow-2xl mt-5 mb-5 border-2 border-red-800">
             <figure>
-                <img src={brand.logo} alt={brand.name} className='w-full h-full'/>
+                <img src={brand.logo} alt={brand.name} className='w-full h-full' />
             </figure>
             <div className="card-body">
                 <h2 className="text-2xl font-bold text-center">{brand.name}</h2>
