@@ -8,6 +8,7 @@ import BrandsPage from '../Brands/BrandsPage';
 import BannerPage from '../Banner/BannerPage';
 import { ClockLoader, BeatLoader } from 'react-spinners';
 import CurrentOffer from '../CurrentOffer/CurrentOffer';
+import MostSold from '../MostSold/MostSold';
 
 
 function Home() {
@@ -69,6 +70,9 @@ function Home() {
                             }
                         </div>
                 }
+            </div>
+            <div className='mt-5 mb-5'>
+                <MostSold></MostSold>
             </div>
         </div>
     )
