@@ -6,7 +6,7 @@ function MostSold() {
     const [networkError, setNetworkError] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/mostsold`)
+        fetch(`https://brand-shop-server-gamma.vercel.app/mostsold`)
             .then((res) => {
                 if (res.ok) {
                     return res.json();

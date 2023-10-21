@@ -21,7 +21,7 @@ function AddProductPage() {
 
     const newProduct = { name, image, type, price, rating, brand, description };
 
-    fetch('http://localhost:5000/addproduct', {
+    fetch('https://brand-shop-server-gamma.vercel.app/addproduct', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

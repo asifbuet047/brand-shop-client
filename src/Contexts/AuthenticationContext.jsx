@@ -7,6 +7,7 @@ export const AuthenticationContext = createContext();
 function AuthenticationContextProvider({ children }) {
     const [user, setUser] = useState(null);
     const [userLoading, setUserLoading] = useState(true);
+  
 
     const createNewUser = (mail, password) => {
         return createUserWithEmailAndPassword(auth, mail, password);
@@ -58,7 +59,7 @@ function AuthenticationContextProvider({ children }) {
         signInWithGoogleAccount,
         changeExitingUsersNameAndPhotoURL,
         changeExitingUsersEmail,
-        changeExitingUsersPassword
+        changeExitingUsersPassword,
     }
 
     return (

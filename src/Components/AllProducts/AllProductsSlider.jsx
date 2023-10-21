@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectCreative, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, EffectCreative, Navigation, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import 'swiper/css/effect-creative';
+import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import "./Slider.css"
 import SliderCard from './SliderCard';
@@ -13,7 +13,7 @@ function AllProductsSlider() {
     const [advertisements, setAdvertisements] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/advertisement`)
+        fetch(`https://brand-shop-server-gamma.vercel.app/advertisement`)
             .then((res) => res.json())
             .then((data) => setAdvertisements(data));
     }, []);
@@ -21,23 +21,12 @@ function AllProductsSlider() {
     return (
         <div className='h-[40vh]'>
             <Swiper
-                effect='creative'
-                creativeEffect={{
-                    prev: {
-                        shadow: true,
-                        translate: [0, 0, -400],
-                    },
-                    next: {
-                        rotate: 50,
-                        translate: ['50%', 0, 0],
-                    },
-                }}
-                
+                effect='fade'
                 pagination={{
                     clickable: true,
                     type: 'bullets'
                 }}
-                modules={[Pagination, Navigation, EffectCreative]}
+                modules={[Pagination, Navigation, EffectFade]}
             >
                 {
                     advertisements ?

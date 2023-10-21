@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
 import Swal from 'sweetalert2'
@@ -6,9 +6,11 @@ import withReactContent from 'sweetalert2-react-content';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NetworkError from '../NetworkError/NetworkError';
+import { AuthenticationContext } from '../../Contexts/AuthenticationContext';
 
 
 function CartProduct({ product }) {
+
     const { _id, userId, productId } = product;
     const [data, setData] = useState(null);
     const [networkError, setNetworkError] = useState(false);
@@ -17,7 +19,7 @@ function CartProduct({ product }) {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productdetails/${productId}`)
+        fetch(`https://brand-shop-server-gamma.vercel.app/productdetails/${productId}`)
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -40,7 +42,7 @@ function CartProduct({ product }) {
             icon: 'warning',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/removecart/${_id}`)
+                fetch(`https://brand-shop-server-gamma.vercel.app/removecart/${_id}`)
                     .then((res) => {
                         if (res.ok) {
                             return res.json();

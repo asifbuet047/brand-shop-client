@@ -13,7 +13,7 @@ function UpdateProduct() {
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/productdetails/${id}`)
+    fetch(`https://brand-shop-server-gamma.vercel.app/productdetails/${id}`)
       .then((res) => res.json())
       .then((data) => { setProduct(data); setRating(data.rating) });
   }, []);
@@ -29,7 +29,7 @@ function UpdateProduct() {
 
     const updatedProduct = [name, image, type, price, rating, brand];
 
-    fetch(`http://localhost:5000/updateproduct/${product._id}`, {
+    fetch(`https://brand-shop-server-gamma.vercel.app/updateproduct/${product._id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'

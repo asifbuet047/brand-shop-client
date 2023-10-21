@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function NavigationBar({ cart }) {
-  const { user, signOutUser } = useContext(AuthenticationContext);
+  const { user, signOutUser, setRender } = useContext(AuthenticationContext);
 
   const handleSignOut = () => {
     console.log("signing out");
@@ -36,10 +36,14 @@ function NavigationBar({ cart }) {
     });
 
   }
+
+  const handleDark = () => {
+
+  }
   return (
     <div className='w-full'>
       <div className="navbar bg-base-200 flex flex-col lg:flex-row lg:justify-around lg:pt-5">
-        <img src="./logo.jpg" alt="Logo" srcSet="" className='w-12 h-12'/>
+        <img src="./logo.jpg" alt="Logo" srcSet="" className='w-12 h-12' />
         {/*Shop name*/}
         <div className="flex flex-row justify-center" tabIndex={0}>
           <Link to={'/'} className='text-black text-3xl'>Tech Brand Online Shop</Link>
@@ -59,14 +63,11 @@ function NavigationBar({ cart }) {
           <div className="dropdown dropdown-end mr-5">
             <div className="btn btn-ghost" tabIndex={0}>
               <div className="indicator">
-                <span className="indicator-item badge badge-secondary">{cart.length}</span>
                 <button type="button" className='btn glass'>My Cart</button>
               </div>
             </div>
             <div className="dropdown-content mt-3 z-[1] card card-compact w-52 bg-base-100 shadow" tabIndex={0}>
               <div className="card-body">
-                <span className="font-bold text-lg">{cart.length} Items</span>
-                {/* <span className="text-info">Subtotal: $999</span> */}
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block"><NavLink to={'/mycart'}>View Cart</NavLink></button>
                 </div>
@@ -103,9 +104,12 @@ function NavigationBar({ cart }) {
                   user ?
                     <div className="card-actions">
                       <button className="btn btn-secondary btn-block" onClick={handleSignOut}>Log Out</button>
-                    </div> :
+                      <button className="btn btn-secondary btn-block" onClick={handleDark}>Dark</button>
+                    </div>
+                    :
                     <div className="card-actions">
                       <button className="btn btn-secondary btn-block"><Link to={'/signin'}>Sign In</Link></button>
+                      <button className="btn btn-secondary btn-block" onClick={handleDark}>Dark</button>
                     </div>
                 }
               </div>
