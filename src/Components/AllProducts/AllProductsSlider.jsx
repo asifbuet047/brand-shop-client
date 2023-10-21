@@ -13,7 +13,7 @@ function AllProductsSlider() {
     const [advertisements, setAdvertisements] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/advertisement`)
+        fetch(`https://brand-shop-server-gamma.vercel.app/advertisement`)
             .then((res) => res.json())
             .then((data) => setAdvertisements(data));
     }, []);

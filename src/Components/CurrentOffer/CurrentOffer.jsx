@@ -6,7 +6,7 @@ function CurrentOffer() {
   const [networkError, setNetworkError] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/currentoffer`)
+    fetch(`https://brand-shop-server-gamma.vercel.app/currentoffer`)
       .then((res) => {
         if (res.ok) {
           return res.json();

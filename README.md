@@ -1,8 +1,11 @@
-# React + Vite
+Main features of Tech Brand Online Shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Our project is Tech Brand Online Shop
+* This is e-commerce store where a user can buy tech products like smartphone,smartwatch,headphone etc
+* User can login via mail and password also new user can create acccount
+* If user already signed in Google at his browser he can login via Google
+* All products ar sorted here as their brand name
+* All home page user can see our current offer, our brands, our most sold product
+* User can add product in cart
+* All cart product can be shown by clicking My Cart button at navigation bar
+* User's profile image and his name is shown at navigation bar

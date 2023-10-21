@@ -11,7 +11,7 @@ function Root() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/cart/${user?.uid}`)
+    fetch(`https://brand-shop-server-gamma.vercel.app/cart/${user?.uid}`)
       .then((res) => {
         if (res.ok) {
           return res.json();

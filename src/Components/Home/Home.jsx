@@ -17,7 +17,7 @@ function Home() {
     const [networkError, setNetworkError] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/brands')
+        fetch('https://brand-shop-server-gamma.vercel.app/brands')
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -30,7 +30,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/banner')
+        fetch('https://brand-shop-server-gamma.vercel.app/banner')
             .then((res) => {
                 if (res.ok) {
                     return res.json();

@@ -13,7 +13,7 @@ function CartProduct({ product }) {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/productdetails/${productId}`)
+        fetch(`https://brand-shop-server-gamma.vercel.app/productdetails/${productId}`)
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -36,7 +36,7 @@ function CartProduct({ product }) {
             icon: 'warning',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/removecart/${_id}`)
+                fetch(`https://brand-shop-server-gamma.vercel.app/removecart/${_id}`)
                     .then((res) => {
                         if (res.ok) {
                             return res.json();
