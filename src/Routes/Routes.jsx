@@ -9,6 +9,7 @@ import AllProductsPage from "../Components/AllProducts/AllProductsPage";
 import ProductDetailsPage from "../Components/ProductDetails/ProductDetailsPage";
 import RegistrationPage from "../Components/Registration/RegistrationPage";
 import Home from "../Components/Home/Home";
+import UpdateProduct from "../Components/AddProduct/UpdateProduct";
 
 
 const routes = createBrowserRouter([
@@ -25,6 +26,11 @@ const routes = createBrowserRouter([
             {
                 path: '/addproduct',
                 element: <PrivateRoute><AddProductPage></AddProductPage></PrivateRoute>,
+                errorElement: <ErrorPage></ErrorPage>
+            },
+            {
+                path: '/updateproduct/:id',
+                element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
                 errorElement: <ErrorPage></ErrorPage>
             },
             {
