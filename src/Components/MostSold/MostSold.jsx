@@ -19,7 +19,7 @@ function MostSold() {
     }, []);
 
     return (
-        <div className="hero w-fit h-1/6 bg-base-200 lg:justify-around lg:pr-10 lg:pt-5">
+        <div className="hero w-full h-1/6 bg-base-200 lg:justify-around lg:pr-10 lg:pt-5">
             {
                 mostsold ?
                     <div className="hero-content flex-col lg:flex-row">
