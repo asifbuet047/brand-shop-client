@@ -7,6 +7,7 @@ import Brand from '../Brands/Brand';
 import BrandsPage from '../Brands/BrandsPage';
 import BannerPage from '../Banner/BannerPage';
 import { ClockLoader, BeatLoader } from 'react-spinners';
+import CurrentOffer from '../CurrentOffer/CurrentOffer';
 
 
 function Home() {
@@ -53,6 +54,9 @@ function Home() {
                         }
                     </div>
             }
+            <div className='mt-5 mb-5'>
+                <CurrentOffer></CurrentOffer>
+            </div>
             <div className='ml-16 lg:ml-32 xl:ml-64 mr-16 lg:mr-32 xl:mr-64 flex flex-col justify-center items-center'>
                 {
                     brands ?
