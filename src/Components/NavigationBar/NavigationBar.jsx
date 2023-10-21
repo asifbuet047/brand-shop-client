@@ -37,14 +37,14 @@ function NavigationBar({ cart }) {
 
   }
   return (
-    <div className=''>
-      <div className="navbar bg-base-200 flex flex-col lg:flex-row lg:justify-around lg:pr-10 lg:pt-5">
+    <div className='w-full'>
+      <div className="navbar bg-base-200 flex flex-col lg:flex-row lg:justify-around lg:pt-5">
         {/*Shop name*/}
         <div className="flex flex-row justify-center" tabIndex={0}>
           <Link to={'/'} className='text-black text-3xl'>Tech Brand Online Shop</Link>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex flex-col items-center justify-center md:flex-row">
 
           <div tabIndex={1}>
             <button className="btn glass"><Link to={'/'}>Home</Link></button>
@@ -53,10 +53,6 @@ function NavigationBar({ cart }) {
           <div>
             <button tabIndex={2} className="btn glass"><Link to={'/addproduct'}>Add Product</Link></button>
           </div>
-
-          {/* <div>
-            <button tabIndex={3} className="btn glass"><Link to={'/mycart'}>My Cart</Link></button>
-          </div> */}
 
           {/*shopping cart with dropdown feather*/}
           <div className="dropdown dropdown-end mr-5">

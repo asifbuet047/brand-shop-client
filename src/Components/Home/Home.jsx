@@ -12,17 +12,32 @@ import { ClockLoader, BeatLoader } from 'react-spinners';
 function Home() {
     const [brands, setBrands] = useState(null);
     const [banner, setBanner] = useState(null);
+    const [networkError, setNetworkError] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:5000/brands')
-            .then((res) => res.json())
-            .then((data) => setBrands(data));
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Server is down');
+                }
+            })
+            .then((data) => setBrands(data))
+            .catch((error) => { console.error('Fetch error', error); setNetworkError(true) });
     }, []);
 
     useEffect(() => {
         fetch('http://localhost:5000/banner')
-            .then((res) => res.json())
-            .then((data) => setBanner(data));
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Server is down');
+                }
+            })
+            .then((data) => setBanner(data))
+            .catch((error) => { console.error('Fetch error', error); setNetworkError(true) });
     }, []);
 
     return (
@@ -31,7 +46,11 @@ function Home() {
                 banner ?
                     <BannerPage banner={banner}></BannerPage> :
                     <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
-                        <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
+                        {
+                            networkError ? <h1>Network Error try later</h1>
+                                :
+                                <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
+                        }
                     </div>
             }
             <div className='ml-16 lg:ml-32 xl:ml-64 mr-16 lg:mr-32 xl:mr-64 flex flex-col justify-center items-center'>
@@ -39,7 +58,11 @@ function Home() {
                     brands ?
                         <BrandsPage allbrands={brands}></BrandsPage> :
                         <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
-                            <ClockLoader color='#36D7B7' size={100} speedMultiplier={2}></ClockLoader>
+                            {
+                                networkError ? <h1>Network Error try later</h1>
+                                    :
+                                    <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
+                            }
                         </div>
                 }
             </div>

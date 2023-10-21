@@ -11,11 +11,11 @@ function Brand({ brand }) {
         navigate(`/allproducts/${brand.name}`);
     }
 
-    useEffect(() => {
+    useEffect(() => {/*  */
         AOS.init();
     }, []);
     return (
-        <div data-aos="fade-left" onClick={handleBrandClick} className="card w-1/2 h-1/2 bg-base-300 shadow-2xl mt-5 mb-5 border-4 border-red-800">
+        <div data-aos="fade-left" onClick={handleBrandClick} className="card bg-base-300 shadow-2xl border-4 border-red-800 w-full lg:w-4/5 lg:h-4/5 lg:mt-5 lg:mb-5">
             <figure>
                 <img src={brand.logo} alt={brand.name} className='w-full h-full' />
             </figure>

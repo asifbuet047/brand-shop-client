@@ -12,8 +12,15 @@ function Root() {
 
   useEffect(() => {
     fetch(`http://localhost:5000/cart/${user?.uid}`)
-      .then((res) => res.json())
-      .then((data) => setCart(data));
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Server is down');
+        }
+      })
+      .then((data) => setCart(data))
+      .catch((error) => console.log(error));
   }, [user]);
 
   return (
