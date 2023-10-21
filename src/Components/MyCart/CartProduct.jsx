@@ -1,37 +1,53 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content';
 
 
 function CartProduct({ product }) {
     const { _id, userId, productId } = product;
     const [data, setData] = useState(null);
+    const [networkError, setNetworkError] = useState(false);
+    const alert = withReactContent(Swal);
 
 
     useEffect(() => {
         fetch(`http://localhost:5000/productdetails/${productId}`)
-            .then((res) => res.json())
-            .then((data) => { setData(data) });
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error('Server is down');
+                }
+            })
+            .then((data) => { setData(data) })
+            .catch((error) => { console.error('Fetch error', error); setNetworkError(true) });
     }, []);
 
     const handleRemoveCart = () => {
-        // fetch(`http://localhost:5000/removecar/${_id}`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newProduct)
-        // }).then((res) => res.json()).then((data) => console.log(data));
-        Swal.fire({
-            position: 'top-end',
-            title: 'Error!',
-            text: 'Do you want to continue',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-        })
 
+        alert.fire({
+            title: 'Do You really want to delete from Cart?',
+            showConfirmButton: true,
+            confirmButtonText: 'Yes, I want',
+            showCancelButton: true,
+            cancelButtonText: "No, I don't",
+            icon: 'warning',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/removecart/${_id}`)
+                    .then((res) => {
+                        if (res.ok) {
+                            return res.json();
+                        } else {
+                            throw new Error('Server is down');
+                        }
+                    })
+                    .then((data) => console.log(data))
+                    .catch((error) => { console.error('Fetch error', error); setNetworkError(true) });
+            }
+        });
     }
 
     return (
@@ -53,7 +69,12 @@ function CartProduct({ product }) {
                     </div>
                 </div> :
                     <div className='flex flex-row justify-center h-full items-center'>
-                        <BeatLoader color='#FF0000' margin={10} size={50}></BeatLoader>
+                        {
+                            networkError ?
+                                <h1>Network error</h1> :
+                                <BeatLoader color='#FF0000' margin={10} size={50}></BeatLoader>
+                        }
+
                     </div>
             }
         </div>
