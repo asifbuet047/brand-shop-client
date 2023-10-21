@@ -9,6 +9,7 @@ import BannerPage from '../Banner/BannerPage';
 import { ClockLoader, BeatLoader } from 'react-spinners';
 import CurrentOffer from '../CurrentOffer/CurrentOffer';
 import MostSold from '../MostSold/MostSold';
+import NetworkError from '../NetworkError/NetworkError';
 
 
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
     const [networkError, setNetworkError] = useState(false);
 
     useEffect(() => {
-        fetch('https://brand-shop-server-gamma.vercel.app/brands')
+        fetch('http://localhost:5000/brands')
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -30,7 +31,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        fetch('https://brand-shop-server-gamma.vercel.app/banner')
+        fetch('http://localhost:5000/banner')
             .then((res) => {
                 if (res.ok) {
                     return res.json();
@@ -49,7 +50,7 @@ function Home() {
                     <BannerPage banner={banner}></BannerPage> :
                     <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
                         {
-                            networkError ? <h1>Network Error try later</h1>
+                            networkError ? <NetworkError></NetworkError>
                                 :
                                 <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
                         }
@@ -64,7 +65,7 @@ function Home() {
                         <BrandsPage allbrands={brands}></BrandsPage> :
                         <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
                             {
-                                networkError ? <h1>Network Error try later</h1>
+                                networkError ? <NetworkError></NetworkError>
                                     :
                                     <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
                             }

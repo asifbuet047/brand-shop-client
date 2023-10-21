@@ -6,7 +6,7 @@ function CurrentOffer() {
   const [networkError, setNetworkError] = useState(false);
 
   useEffect(() => {
-    fetch(`https://brand-shop-server-gamma.vercel.app/currentoffer`)
+    fetch(`http://localhost:5000/currentoffer`)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -34,7 +34,7 @@ function CurrentOffer() {
           :
           <div className='flex flex-row justify-center pt-10 pb-10 items-center'>
             {
-              networkError ? <h1>Network Error try later</h1>
+              networkError ? <NetworkError></NetworkError>
                 :
                 <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
             }

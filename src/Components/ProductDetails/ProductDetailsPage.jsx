@@ -12,7 +12,7 @@ function ProductDetailsPage() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`https://brand-shop-server-gamma.vercel.app/productdetails/${id}`)
+    fetch(`http://localhost:5000/productdetails/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -21,7 +21,7 @@ function ProductDetailsPage() {
     const userId = user.uid;
     const productId = id;
     const cart = { userId, productId };
-    fetch(`https://brand-shop-server-gamma.vercel.app/addcart/${id}`, {
+    fetch(`http://localhost:5000/addcart/${id}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -1,3 +1,4 @@
+
 Main features of Tech Brand Online Shop
 
 * Our project is Tech Brand Online Shop
@@ -9,3 +10,6 @@ Main features of Tech Brand Online Shop
 * User can add product in cart
 * All cart product can be shown by clicking My Cart button at navigation bar
 * User's profile image and his name is shown at navigation bar
+
+
+Live link of project: https://assignment-10-brand-shop-b0762.web.app/

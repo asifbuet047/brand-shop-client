@@ -10,7 +10,7 @@ function AllProductsPage() {
   const [allProducts, setAllProducts] = useState(null);
 
   useEffect(() => {
-    fetch(`https://brand-shop-server-gamma.vercel.app/allproducts/${name}`)
+    fetch(`http://localhost:5000/allproducts/${name}`)
       .then((res) => res.json())
       .then((data) => { console.log(data); setAllProducts(data) });
   }, []);

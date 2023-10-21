@@ -18,7 +18,7 @@ function SignInPage() {
     const mail = formData.get('mail');
     signInUser(mail, password)
       .then((user) => {
-        toast.success(`Successfully Logged In. Welcome ${user.email}`);
+        toast.success(`Successfully Logged In. Welcome`);
         if (location.state === null) {
           navigate('/');
         } else {
@@ -67,7 +67,7 @@ function SignInPage() {
       }
       <ToastContainer
         position="bottom-right"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}

@@ -11,7 +11,7 @@ function MyCartPage() {
   const [cart, setCart] = useState(null);
 
   useEffect(() => {
-    fetch(`https://brand-shop-server-gamma.vercel.app/cart/${user?.uid}`)
+    fetch(`http://localhost:5000/cart/${user?.uid}`)
       .then((res) => res.json())
       .then((data) => setCart(data));
   }, []);
