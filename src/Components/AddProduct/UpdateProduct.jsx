@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Rating, RoundedStar } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { BeatLoader } from 'react-spinners';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UpdateProduct() {
   const { id } = useParams();
-  console.log(id);
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [rating, setRating] = useState(0);
 
@@ -33,7 +35,21 @@ function UpdateProduct() {
         'content-type': 'application/json'
       },
       body: JSON.stringify(updatedProduct)
-    }).then((res) => res.json()).then((data) => console.log(data));
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error('Server is down');
+      }
+    }).then((data) => {
+      if (data.acknowledged) {
+        toast.success(`${name} is successfully edited in out list`);
+        navigate('/');
+      } else {
+        toast.error(`${name} is not edited in out list. Try later`);
+      }
+    })
+      .catch((error) => { console.error('Fetch error', error); });
   }
 
 
@@ -69,6 +85,18 @@ function UpdateProduct() {
             <BeatLoader color='#36D7B7' margin={10} size={50}></BeatLoader>
           </div>
       }
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
     </div>
   )
 }

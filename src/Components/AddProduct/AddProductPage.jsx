@@ -3,13 +3,12 @@ import { Rating, RoundedStar } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NetworkError from '../NetworkError/NetworkError';
-import { ClockLoader, BeatLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
 
 function AddProductPage() {
   const [rating, setRating] = useState(0);
-  const [networkError, setNetworkError] = useState(false);
-
+  const navigate = useNavigate();
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -37,12 +36,11 @@ function AddProductPage() {
     }).then((data) => {
       if (data.acknowledged) {
         toast.success(`${name} is successfully added in out list`);
-
+        navigate('/');
       } else {
         toast.error(`${name} is not added in out list. Try later`);
       }
-    })
-      .catch((error) => { console.error('Fetch error', error); setNetworkError(true) });
+    }).catch((error) => { console.error('Fetch error', error); });
   }
 
 

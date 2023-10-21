@@ -8,11 +8,9 @@ function SignInPage() {
   const { user, userLoading, signInUser } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   const handleSignIn = (event) => {
     event.preventDefault();
-    console.log(event);
     const formData = new FormData(event.currentTarget);
     const password = formData.get('password');
     const mail = formData.get('mail');

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import NetworkError from '../NetworkError/NetworkError';
 
 
 function CartProduct({ product }) {
@@ -10,6 +13,7 @@ function CartProduct({ product }) {
     const [data, setData] = useState(null);
     const [networkError, setNetworkError] = useState(false);
     const alert = withReactContent(Swal);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -35,7 +39,6 @@ function CartProduct({ product }) {
             cancelButtonText: "No, I don't",
             icon: 'warning',
         }).then((result) => {
-            console.log(result);
             if (result.isConfirmed) {
                 fetch(`http://localhost:5000/removecart/${_id}`)
                     .then((res) => {
@@ -45,8 +48,15 @@ function CartProduct({ product }) {
                             throw new Error('Server is down');
                         }
                     })
-                    .then((data) => console.log(data))
-                    .catch((error) => { console.error('Fetch error', error); setNetworkError(true) });
+                    .then((data) => {
+                        if (data.acknowledged) {
+                            toast.success(`${data.name} is successfully removed from Your Cart`);
+                            navigate('/');
+                        } else {
+                            toast.error(`${data.name} is not removed from Your Cart. Try later`);
+                        }
+                    })
+                    .catch((error) => { console.error('Fetch error', error); });
             }
         });
     }
@@ -72,7 +82,7 @@ function CartProduct({ product }) {
                     <div className='flex flex-row justify-center h-full items-center'>
                         {
                             networkError ?
-                                <h1>Network error</h1> :
+                                <NetworkError></NetworkError> :
                                 <BeatLoader color='#FF0000' margin={10} size={50}></BeatLoader>
                         }
 
