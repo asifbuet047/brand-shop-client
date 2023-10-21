@@ -39,6 +39,7 @@ function NavigationBar({ cart }) {
   return (
     <div className='w-full'>
       <div className="navbar bg-base-200 flex flex-col lg:flex-row lg:justify-around lg:pt-5">
+        <img src="./logo.jpg" alt="Logo" srcSet="" className='w-12 h-12'/>
         {/*Shop name*/}
         <div className="flex flex-row justify-center" tabIndex={0}>
           <Link to={'/'} className='text-black text-3xl'>Tech Brand Online Shop</Link>

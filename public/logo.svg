@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<g id="BACKGROUND">
+	<rect style="fill:#FFFFFF;" width="500" height="500"/>
+</g>
+<g id="OBJECT">
+	<g>
+		<g>
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="145.0369" y1="161.9826" x2="145.0369" y2="105.0178">
+				<stop  offset="0" style="stop-color:#15258F"/>
+				<stop  offset="1" style="stop-color:#2E4DA3"/>
+			</linearGradient>
+			<path style="fill:url(#SVGID_1_);" d="M166.245,163.405h-42.416c-4.557,0-8.182-3.829-7.93-8.386l1.072-15.826l32.268,11.482
+				c0.214,0.078,0.432,0.112,0.65,0.112c0.796,0,1.548-0.495,1.83-1.291c0.359-1.009-0.17-2.121-1.179-2.48l-33.297-11.846
+				l1.655-24.44c0.233-4.208,3.717-7.503,7.93-7.503h36.417c4.212,0,7.697,3.295,7.93,7.503l1.102,16.243l-30.957-11.016
+				c-1.01-0.359-2.121,0.17-2.48,1.179c-0.359,1.009,0.17,2.121,1.179,2.48l32.544,11.579l1.611,23.824
+				C174.427,159.576,170.802,163.405,166.245,163.405z"/>
+			<g>
+				
+					<linearGradient id="SVGID_00000107567972953792265600000009729236893438558085_" gradientUnits="userSpaceOnUse" x1="145.2795" y1="101.3416" x2="145.2795" y2="88.8803">
+					<stop  offset="0" style="stop-color:#CE5B23"/>
+					<stop  offset="1" style="stop-color:#DE7D39"/>
+				</linearGradient>
+				<path style="fill:url(#SVGID_00000107567972953792265600000009729236893438558085_);" d="M145.279,88.911
+					c-6.959,0-12.618,5.659-12.618,12.618h5.824c0-3.747,3.048-6.794,6.794-6.794c3.747,0,6.794,3.048,6.794,6.794h5.824
+					C157.897,94.57,152.239,88.911,145.279,88.911z"/>
+			</g>
+		</g>
+		<text transform="matrix(1 0 0 1 77.0104 189.1425)"><tspan x="0" y="0" style="fill:#213B85; font-family:'Poppins-ExtraBold'; font-size:20.487px;">Tech Brand Online Shop</tspan><tspan x="78.977" y="0" style="fill:#CE5C1C; font-family:'Poppins-ExtraBold'; font-size:20.487px;"></tspan></text>
+	</g>
+	
+	
+</g>
+</svg>
