@@ -24,7 +24,7 @@ function Root() {
   }, [user]);
 
   return (
-    <div className='bg-white'>
+    <div>
       <NavigationBar cart={cart}></NavigationBar>
       <Outlet></Outlet>
       <Footer></Footer>

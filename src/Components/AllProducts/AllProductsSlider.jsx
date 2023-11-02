@@ -19,7 +19,7 @@ function AllProductsSlider() {
     }, []);
 
     return (
-        <div className='h-[40vh]'>
+        <div className='h-fit w-full mt-5 border-2 rounded-lg'>
             <Swiper
                 effect='fade'
                 pagination={{

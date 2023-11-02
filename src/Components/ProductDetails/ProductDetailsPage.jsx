@@ -24,7 +24,7 @@ function ProductDetailsPage() {
     fetch(`https://brand-shop-server-gamma.vercel.app/addcart/${id}`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
       body: JSON.stringify(cart)
     }).then((res) => res.json()).then((data) => {
@@ -67,7 +67,7 @@ function ProductDetailsPage() {
               <div className="card-body">
                 <h2 className="card-title">Name: {product.name}</h2>
                 <h2 className="card-title">Brand: {product.brand}</h2>
-                <h2 className="card-title">Price: ${product.price}</h2>
+                <h2 className="card-title">Price: {product.price}</h2>
                 <h2 className="card-title">User Rating: {product.rating}</h2>
                 <h2 className="card-title">Type: {product.type}</h2>
                 <p>{product.description}</p>

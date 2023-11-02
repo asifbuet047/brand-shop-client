@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FaQuestion, FaUserCircle } from 'react-icons/fa'
 import { space } from 'postcss/lib/list';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function NavigationBar({ cart }) {
   const { user, signOutUser, setRender } = useContext(AuthenticationContext);
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     console.log("signing out");
@@ -22,6 +23,7 @@ function NavigationBar({ cart }) {
         pauseOnHover: false,
         theme: 'light'
       });
+      navigate('/');
     }).catch((error) => {
       toast.error(`Signing Out Incomplete. Try later`, {
         position: 'bottom-right',
@@ -43,10 +45,10 @@ function NavigationBar({ cart }) {
   return (
     <div className='w-full'>
       <div className="navbar bg-base-200 flex flex-col lg:flex-row lg:justify-around lg:pt-5">
-        <img src="./logo.jpg" alt="Logo" srcSet="" className='w-12 h-12' />
+        <img src="logo.jpg" alt="Logo" srcSet="" className='w-12 h-12' />
         {/*Shop name*/}
         <div className="flex flex-row justify-center" tabIndex={0}>
-          <Link to={'/'} className='text-black text-3xl'>Tech Brand Online Shop</Link>
+          <Link to={'/'} className='text-black text-3xl font-bold'>Tech Brand Online Shop</Link>
         </div>
 
         <div className="flex flex-col items-center justify-center md:flex-row">
@@ -79,7 +81,7 @@ function NavigationBar({ cart }) {
 
 
           {/*avator of logged user with dropdown feather*/}
-          <div className="dropdown dropdown-left ml-5">
+          <div className="dropdown dropdown-end ml-5">
             <div className="btn btn-ghost" tabIndex={1}>
               {
                 user ?
@@ -97,7 +99,7 @@ function NavigationBar({ cart }) {
               <div className="card-body">
                 {
                   user ?
-                    <span className="font-bold text-lg card-title">{user.displayName ? user.displayName : user.email}</span> :
+                    <span className="font-bold text-sm lg:text-base card-title">{user.displayName ? user.displayName : user.email}</span> :
                     <span>No User</span>
                 }
                 {

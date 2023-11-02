@@ -19,15 +19,15 @@ function MostSold() {
     }, []);
 
     return (
-        <div className="hero w-full h-1/6 bg-base-200 lg:justify-around lg:pr-10 lg:pt-5">
+        <div className="hero h-1/6 bg-base-200 lg:justify-around lg:pr-10 lg:pt-5">
             {
                 mostsold ?
                     <div className="hero-content flex-col lg:flex-row">
-                        <img src={mostsold.image} className="max-w-lg rounded-lg shadow-2xl" />
+                        <img src={mostsold.image} className="max-w-full rounded-lg shadow-2xl" />
                         <div className='flex flex-col items-center lg:items-center'>
-                            <h1 className="text-2xl lg:text-5xl font-bold text-center">Our most sold product {mostsold.name}</h1>
-                            <p className="text-lg lg:text-xl py-6"><span className='text-2xl lg:text-4xl'>৳</span> {mostsold.price * 102}</p>
-                            <p className="text-lg lg:text-xl py-6">Sold count {mostsold.sold}</p>
+                            <h1 className="text-xl lg:text-3xl font-bold text-center">Our most sold product {mostsold.name}</h1>
+                            <p className="text-lg py-2 lg:text-xl lg:py-6"><span className='text-2xl lg:text-4xl'>৳</span> {mostsold.price * 102}</p>
+                            <p className="text-lg py-2 lg:text-xl lg:py-6">Sold count {mostsold.sold}</p>
                             <button className="btn btn-primary w-fit">Now only <span className='text-xl lg:text-2xl'>৳</span> {mostsold.price * 102 - 10 * 102}</button>
                         </div>
                     </div>
