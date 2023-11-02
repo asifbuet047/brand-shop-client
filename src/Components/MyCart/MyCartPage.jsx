@@ -4,16 +4,18 @@ import CartProduct from './CartProduct';
 import NoCartPage from './NoCartPage';
 import { Navigate } from 'react-router-dom';
 import { BeatLoader } from 'react-spinners';
+import useAxios from '../../hooks/useAxios';
 
 
 function MyCartPage() {
   const { user } = useContext(AuthenticationContext);
   const [cart, setCart] = useState(null);
+  const axiosHook = useAxios();
 
   useEffect(() => {
-    fetch(`https://brand-shop-server-gamma.vercel.app/cart/${user?.uid}`)
-      .then((res) => res.json())
-      .then((data) => setCart(data));
+    axiosHook.get(`/cart/${user?.uid}`)
+      .then((res) => { console.log(res.data); setCart(res.data) })
+      .catch((error) => { console.log(error) });
   }, []);
 
 

@@ -3,11 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext';
+import useAxios from '../../hooks/useAxios';
 
 function SignInPage() {
   const { user, userLoading, signInUser } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const axiosHook = useAxios();
 
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -16,16 +18,29 @@ function SignInPage() {
     const mail = formData.get('mail');
     signInUser(mail, password)
       .then((user) => {
-        toast.success(`Successfully Logged In. Welcome`);
+        const mail = user.user.email;
+        const uid = user.user.uid;
+        axiosHook.post('/api/v1/token', { mail, uid })
+          .then((response) => {
+            console.log(response);
+          }).catch((error) => {
+            console.log(error);
+          })
+        toast.success(`Successfully Logged In. Welcome`, {
+          position: 'bottom-center',
+          autoClose: 2000,
+        });
         if (location.state === null) {
           navigate('/');
         } else {
-          console.log(location.state);
           navigate(`${location.state}`);
         }
       })
       .catch((error) => {
-        toast.error("Email and password dont match");
+        toast.error(error, {
+          position: 'bottom-center',
+          autoClose: 5000,
+        });
       })
 
   };
@@ -63,7 +78,7 @@ function SignInPage() {
         </div>
         : <span></span>
       }
-      <ToastContainer
+      {/* <ToastContainer
         position="bottom-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -74,7 +89,7 @@ function SignInPage() {
         draggable={false}
         pauseOnHover={false}
         theme="light"
-      />
+      /> */}
     </div>
   )
 }

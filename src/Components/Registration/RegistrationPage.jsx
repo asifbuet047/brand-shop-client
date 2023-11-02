@@ -5,17 +5,19 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthenticationContext } from '../../Contexts/AuthenticationContext';
 import { useContext } from 'react';
 import { isCapitalLetterPresentInPassword, isPasswordLengthEnough, isSpecialCharacterPresentInPassword } from '../../PasswordValidator/PasswordValidator'
+import useAxios from '../../hooks/useAxios';
 
 
 function RegistrationPage() {
     const { createNewUser, signInWithGoogleAccount } = useContext(AuthenticationContext);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
+    const axiosHook = useAxios();
 
     const handleGoogleSignIn = (event) => {
         signInWithGoogleAccount()
             .then((result) => {
+                
                 toast.success(`Registration successfully completed. Welcome ${result.email}`, {
                     position: 'bottom-right',
                     autoClose: '2000',
@@ -145,7 +147,7 @@ function RegistrationPage() {
                     </div>
                 </form>
             </div>
-            <ToastContainer
+            {/* <ToastContainer
                 position="bottom-right"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -156,7 +158,7 @@ function RegistrationPage() {
                 draggable={false}
                 pauseOnHover={false}
                 theme="light"
-            />
+            /> */}
         </div>
     )
 }
