@@ -23,13 +23,14 @@ function SignInPage() {
         axiosHook.post('/api/v1/token', { mail, uid })
           .then((response) => {
             console.log(response);
+            toast.success(`Successfully Logged In. Welcome`, {
+              position: 'bottom-center',
+              autoClose: 2000,
+            });
           }).catch((error) => {
             console.log(error);
           })
-        toast.success(`Successfully Logged In. Welcome`, {
-          position: 'bottom-center',
-          autoClose: 2000,
-        });
+
         if (location.state === null) {
           navigate('/');
         } else {
